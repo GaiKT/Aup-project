@@ -1,3 +1,10 @@
+<?php  
+ // เรียกใช้ php connect เพื่อใช้คำสั่ง SQL
+    require ('connect.php');
+    $sql = 'SELECT * FROM team;';
+    $query = mysqli_query($connect,$sql);
+?>     
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +21,7 @@
         }
     </style>
 </head>
-<body>
+<body> 
     <h1> ADD Member AUP!! </h1>
     <form action="addmember_process.php" method="post">
         <label> ID Card Number </label>
@@ -27,45 +34,33 @@
         <input type="text" name="address"><br>
         <label> Date </label>
         <input type="date" name="date"><br>
-        <label> Team </label>    
-                <?php  
-                // เรียกใช้ php connect เพื่อใช้คำสั่ง SQL
-                    require ('connect.php');
-                    $sql = 'SELECT team_id , team_name FROM team;';
-                    $objquery = mysqli_query($connect , $sql);
-                ?>        
+        
+        <label> Team </label>      
             <select name = "team" id = "team" require >
-                <option value = '' selected disabled>-กรุณาเลือก-</option>
+                <option selected disabled>-กรุณาเลือก-</option>
                 <?php
-                // Loop เพื่อนำค่าจาก SQL มาแทนลงไปใน Value ของ option เมื่อค่าใน DATA BASE เปลี่ยนแปลงตรงนี้จะเปลี่ยนแปลงด้วย
-                    while ($obResult = mysqli_fetch_array($objquery)) {
-                ?>
-                    <option value = <?php echo $obResult ["team_id"];?>> <?php echo $obResult ["team_name"]; ?> </option>
-                    <?php
-                    }
-                ?>
+                foreach ($query as $value) { ?>
+                <option value = "<?=$value ['team_id'] ?>"> <?=$value ["team_name"]?> </option>
+                <?php } ?>
             </select><br>
         <label> Company </label>
-            <select name="company" id="company" require></select>   
-            <?php
-                // Loop เพื่อนำค่าจาก SQL มาแทนลงไปใน Value ของ option เมื่อค่าใน DATA BASE เปลี่ยนแปลงตรงนี้จะเปลี่ยนแปลงด้วย
-                    while ($obResult = mysqli_fetch_array($objquery)) {
-                ?>     
-                    
-                    <?php
-                    }
-                ?>             
+            <select name="company" id="company"> </select><br>  
+
             <script type = "text/javascript" >
                 $('#team').change(function(){
-                    let id = $(this).val();
+                    var id_team = $(this).val();
                     $.ajax({
                         type: "post",
-                        url: "addmember_process.php"
+                        url: "addmember_jqury.php",
                         data:{id:id_team,function:'team'},
                         success : function(data) {
+                            console.log(data)
                             $('#company').html(data)
                         }
                     })
+                });
+                $('#company').change(function(){
+                    console.log($(this))  
                 });
 
             </script>
