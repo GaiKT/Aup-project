@@ -1,5 +1,5 @@
-<?php include 'connect.php'; ?>
 <?php
+include 'connect.php';
 if(isset($_POST['function']) && $_POST['function']=='team'){
     $id = $_POST['id'];
     $sql = "SELECT * FROM company WHERE team_id ='$id'";
