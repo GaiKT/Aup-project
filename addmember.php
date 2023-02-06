@@ -18,44 +18,55 @@
     <div class="container">
         <div class="row mt-4">
             <div class="col-md-8 mx-auto bg-light rounded p-4">
-                <h2 class="text-center font-weight-bold"> ADD Member AUP!! </h2>
+                <h2 class="text-center font-weight-bold"> แบบฟอร์มการสมัคร AUP </h2>
                 <hr class="my-1">
-                <h5 class="text-center text-secondary">write any ID Card in the search box.</h5>
-                <form action="addmember_process.php" method="post" class = "row gy-2 gx-3 align-items-center">
-                    <label class = "font-weight-bold"> ID Card Number </label>
-                    <input type="text" name="id_card" class = ""><br>
-                    <label class = "font-weight-bold"> Firstname </label>
-                    <input type="text" name="first_name"><br>
-                    <label class = "font-weight-bold"> Lastname </label>
-                    <input type="text" name="last_name"><br>
-                    <label class = "font-weight-bold"> Address </label>
-                    <input type="text" name="address"><br>
-                    <label class = "font-weight-bold"> Date </label>
-                    <input type="date" name="date"><br>
-                    <label class = "font-weight-bold"> Team </label>      
-                        <select name = "team" id = "team" require >
-                            <option selected disabled>-กรุณาเลือก-</option>
-                            <?php
-                            foreach ($query as $value) { ?>
-                            <option class = "dropdown-item" value = "<?=$value ['team_id'] ?>"> <?=$value ["team_name"]?> </option>
-                            <?php } ?>
-                        </select><br>
-                    <label class = "font-weight-bold"> Company </label>
-                        <select name="company" id="company"> 
-                            <option class = "dropdown-item" selected disabled>-กรุณาเลือก-</option>
-                        </select><br>  
-                    <input type="submit" value="Add Member" class="btn btn-info btn-lg rounded-0">
+                <h5 class="text-center text-secondary">กรุณากรอกข้อมูลทั้งหมดในช่องว่าง</h5>
+                <form action="addmember_process.php" method="post">
+                    <div class="mt-3 mb-3">
+                        <label class = "h4 form-label font-weight-bold"> เลขบัตรประชาชน 13 หลัก</label>
+                        <input type="number" name="id_card" class = "form-control"placeholder="กรุณากรอกเลขที่บัตรประชาชน 13 หลัก">
+                    </div>
+                    <div class="mb-3">
+                        <label class = "h4 form-label font-weight-bold"> ชื่อจริง </label>
+                        <input type="text" name="first_name"class = "form-control"placeholder="กรุณากรอกชื่อจริง">                
+                    </div>
+                    <div class="mb-3">
+                        <label class = "h4 form-label font-weight-bold"> นามสกุล </label>
+                        <input type="text" name="last_name"class = "form-control"placeholder="กรุณากรอกนามสกุล">
+                    </div>
+                    <div class="mb-3">
+                        <label class = "h4 form-label font-weight-bold"> ที่อยู่ </label>
+                        <textarea type="text" name="address" cols="15" rows="2" class = "form-control" placeholder="กรุณากรอกที่อยู่..."></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label class = "h4 form-label font-weight-bold">วันที่กรอกเอกสาร </label>
+                        <input type="date" name="date"class = "form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class = "h4 form-label font-weight-bold"> ทีมที่เข้าดำเนินการ </label>      
+                        <select class = "form-select" name = "team" id = "team" require >
+                            <option selected disabled>กรุณาเลือก.....</option>
+                            <?php foreach ($query as $value) { ?>
+                            <option value = "<?=$value ['team_id'] ?>"> <?=$value ["team_name"]?> </option>
+                                <?php } ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class = "h4 form-label font-weight-bold"> บริษัทที่เข้าดำเนินการ </label>
+                        <select class = "form-select" name="company" id="company"> 
+                            <option class = "form-control" selected disabled>กรุณาเลือก.....</option>
+                        </select>
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" value="ยืนยัน" class="btn btn-success mt-3 md-3">
+                        <a class="btn btn-secondary mt-3" href="search_index.php" role="button">ยกเลิก</a>
+                    </div>
+
                 </form>
             </div>
         </div>
     </div>
 
-
-
-
-
-    
-   
     <script src="main.js"></script>
 
     

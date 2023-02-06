@@ -15,26 +15,24 @@
             <div class="col-md-8 mx-auto bg-light rounded p-4">
                 <h2 class="text-center font-weight-bold">AUP Search System</h2>
                 <hr class="my-1">
-                <h5 class="text-center text-secondary">write any ID Card in the search box.</h5>
+                <h6 class="text-center text-secondary">โปรแกรมค้นหาข้อมูล Custumer , partner , Vendor ที่เข้าดำเนินการในศูนย์ข้อมูลคอมพิวเตอร์ ตามมาตรฐาน ISO</h6>
                 <form action="search_details.php" method="POST" class="p-3" style="position: relative;">
                     <div class="input-group">
-                        <input type="text" name="search" id="search" class="form-control form-control-lg border-info rounded-0" placeholder="Enter custumer ID Card..." autocomplete="off" required>
+                        <input type="text" name="search" id="search" class="form-control form-control-lg border-info rounded-0" placeholder="กรอกเลขประจำตัวประชาชนที่ต้องการค้นหา..." autocomplete="off" required>
                         <div class="input-group-append">
-                            <input type="submit" name="submit" value="Search" class="btn btn-info btn-lg rounded-0">
+                            <input type="submit" name="submit" value="ค้นหา" class="btn btn-info btn-lg rounded-0">
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="list-group" style="position: absolute; width: 400px;" id="show-list"></div>
                     </div>
-                    <a href="addmember.php" class="btn btn-success mt-4"> Add new member</a>
+                    <a href="addmember.php" class="btn btn-success mt-4"> + เพิ่มสมาชิกใหม่</a>
                 </form>
             </div>
         </div>
     </div>
-    
-
-
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script src="main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
+            src="main.js">
+    </script>
 </body>
 </html>
